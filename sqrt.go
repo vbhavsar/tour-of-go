@@ -1,5 +1,8 @@
 package main
 
+// Calculates sqrt using Newton's method
+// http://tour.golang.org/#44
+
 import (
 	"fmt"
 	"math"
@@ -31,7 +34,7 @@ func main() {
 	sqrt_cal := Sqrt(2)
 	sqrt_act := math.Sqrt(2)
 	
-	fmt.Println("calc:",sqrt_cal)
+	fmt.Println("calculated:",sqrt_cal)
 	fmt.Println("actual:",sqrt_act)
 	fmt.Println("diff:",sqrt_cal - sqrt_act);
 }
