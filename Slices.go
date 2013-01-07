@@ -13,7 +13,7 @@ func Pic(dx, dy int) [][]uint8 {
 	for x:=0; x<dx; x++{
 		rv[x] = make([]uint8, dy) 
 		for y:=0; y<dy; y++{
-			rv[x][y] = uint8((x+y)/3);
+			rv[x][y] = uint8(x^y);
 		}
 	}
 	return rv;
