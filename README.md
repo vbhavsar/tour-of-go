@@ -1,1 +1,1 @@
-Exercies from http://tour.go-lang.org
+Exercies from http://tour.golang.org
