@@ -1,0 +1,45 @@
+package main
+
+// Sqrt should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+// http://tour.golang.org/#58
+
+import (
+  "fmt"
+	"math"
+)
+
+const delta = 0.0005
+
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string {
+	return fmt.Sprintf("cannot Sqrt negative number: %f", float64(e))
+}
+
+func Sqrt(f float64) (float64, error) {
+	
+	if f<0 {
+		return f, ErrNegativeSqrt(f)
+	}
+	
+	if f == 0 {
+		return f, nil
+	}
+	sqrt_act := math.Sqrt(f)
+
+	z := f/2
+
+	diff := math.Abs(sqrt_act - z)
+
+	for diff > delta {
+		z = z - ((z*z - f) / 2*z)
+		diff = math.Abs(sqrt_act - z)
+	}
+
+	return z, nil
+}
+
+func main() {
+	fmt.Println(Sqrt(2))
+	fmt.Println(Sqrt(-2))
+}
