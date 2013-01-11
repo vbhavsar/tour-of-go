@@ -27,7 +27,7 @@ func Sqrt(x float64) float64 {
 		runs++
 	}
 	fmt.Println("runs",runs)
-	return z;
+	return z
 }
 
 func main() {
