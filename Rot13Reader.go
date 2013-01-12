@@ -1,10 +1,9 @@
 package main
 
 import (
-  "io"
+	"io"
 	"os"
 	"strings"
-	//"fmt"
 )
 
 type rot13Reader struct {
@@ -14,11 +13,11 @@ type rot13Reader struct {
 func (rdr *rot13Reader) Read(p []byte) (n int, err error) {
 	n,e := rdr.r.Read(p)
 	if e == nil {
-		for i:=0; i<len(p); i++ {
+		for i,ch := range p {
 			switch {
-			case  p[i] < 'A' || p[i] > 'z':
-			case p[i] + 13 > 'z':
-				p[i] = 'a' + 12 - ('z' - p[i])
+			case  ch < 'A' || ch > 'z':
+			case ch + 13 > 'z':
+				p[i] = 'a' + 12 - ('z' - ch)
 			default:
 				p[i]+=13
 			}
